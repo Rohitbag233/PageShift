@@ -69,7 +69,7 @@ app.get("/*", async (req, res) => {
     try {
       response = await client.chat.completions.create({
         messages: [{ role: "user", content: prompt }],
-        model: "openai/gpt-oss-120b",
+        model: "mixtral-8x7b-32768",
       });
     } catch (err) {
       // Switch API key if rate limit is hit
@@ -78,7 +78,7 @@ app.get("/*", async (req, res) => {
         client = getClient();
         response = await client.chat.completions.create({
           messages: [{ role: "user", content: prompt }],
-          model: "openai/gpt-oss-120b",
+          model: "openai/gpt-oss-20b",
         });
       } else throw err;
     }
